@@ -25,23 +25,20 @@ const reviewSchema = new Schema({
 });
 
 const dogSchema = new Schema({
-  title: { type: String, required: true },
-  releaseYear: {
-    type: Number,
-    default: function() {
-      return new Date().getFullYear();
-    },
-    min: 1927
+  name: { type: String, required: true },
+  birthday: {
+    type: Date,
+    default: Date.now,
   },
-  mpaaRating: {
+  gender: {
     type: String,
-    enum: ['G', 'PG', 'PG-13', 'R']
+    enum: ['M', 'M/N', 'F', 'F/S']
   },
-  cast: [{
+  places: [{
     type: Schema.Types.ObjectId,
-    ref: 'Performer'
+    ref: 'location'
   }],
-  nowShowing: { type: Boolean, default: true },
+  myPet: { type: Boolean, default: true },
   reviews: [reviewSchema]
 }, {
   timestamps: true

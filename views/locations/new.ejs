@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+
+<div>Add your favorite places to play!</div>
+<section id="badge-container">
+  <% locations.forEach(function(p) { %>
+    <article class="badge"><%= p.name %></article>
+  <% }) %>
+</section>
+
+<form id="add-location-form" action="/locations" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name">
+  <label>Play Date:</label>
+  <input type="date" name="playDate">
+  <input type="submit" value="Add Location">
+</form>
+
+<%- include('../partials/footer') %>

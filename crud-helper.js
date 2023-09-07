@@ -24,7 +24,7 @@ require('./config/database');
 
 // Require the app's Mongoose models
 const Dog = require('./models/dog');
-const Performer = require('./models/performer');
+const location = require('./models/location');
 
 // Example CRUD
 

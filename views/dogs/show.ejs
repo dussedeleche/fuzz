@@ -1,38 +1,39 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-  <div>Title: </div>
-  <div><%= dog.title %></div>
-  <div>Release Year: </div>
-  <div><%= dog.releaseYear %></div>
-  <div>Rating: </div>
-  <div><%= dog.mpaaRating %></div>
-  <div>Now Showing: </div>
-  <div><%= dog.nowShowing ? 'Yes' : 'Nope' %></div>
-  <!-- start cast list -->
-  <div>Cast:</div>
+  <div>Name: </div>
+  <div><%= dog.name %></div>
+  <div>Birthday: </div>
+  <div><%= dog.birthday %></div>
+  <div>Gender: </div>
+  <div><%= dog.gender %></div>
+  <div>My pets: </div>
+  <div><%= dog.myPet ? 'Yes' : 'No' %></div>
+  <!-- start places list -->
+  <div>places:</div>
   <ul>
-    <%- dog.cast.map(p => 
-      `<li>${p.name} <small>${p.born.toLocaleDateString()}</small></li>`
+    <%- dog.places.map((p, index) => 
+      `<li>${p.name} <small>${p.playDate.toLocaleDateString()}</small></li>`
+      <!-- <img src=`dog${index}.png` class="img-responsive"> -->
     ).join('') %>
   </ul>
-  <!-- end cast list -->
+  <!-- end places list -->
 </section>
-<!-- add to cast form below this comment -->
-<form id="add-per-to-cast" action="/dogs/<%= dog._id %>/performers" method="POST">
-  <select name="performerId">
-    <!-- Emit an option for each performer -->
-    <%- performers.map(p => 
+<!-- add to places form below this comment -->
+<form id="add-per-to-places" action="/dogs/<%= dog._id %>/locations" method="POST">
+  <select name="locationId">
+    <!-- Emit an option for each location -->
+    <%- locations.map(p => 
       `<option value="${p._id}">${p.name}</option>`
     ).join('') %>
   </select>
-  <button type="submit">Add to Cast</button>
+  <button type="submit">Add to places</button>
 </form>
 
-<br><br><h2>Reviews</h2>
+<br><br><h2>Playdate Log</h2>
 <form id="add-review-form" method="POST"
   action="/dogs/<%= dog._id %>/reviews">
-  <label>Review:</label>
+  <label>Notes:</label>
   <textarea name="content"></textarea>
   <label>Rating:</label>
   <select name="rating">
@@ -42,7 +43,7 @@
     <option value="4">4</option>
     <option value="5" selected>5</option>
   </select>
-  <input type="submit" value="Add Review">
+  <input type="submit" value="Submit">
 </form>
 
 <% if (dog.reviews.length) { %>
@@ -51,7 +52,7 @@
       <tr>
         <th>User</th>
         <th>Date</th>
-        <th>Review</th>
+        <th>Notes</th>
         <th>Rating</th>
         <th></th>
       </tr>
