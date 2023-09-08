@@ -106,13 +106,13 @@ table td {
   background-color: rgb(37, 219, 152);
 }
 
-#show-page {
+#buddy-page {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 1rem;
 }
 
-#show-page div:nth-child(even) {
+#buddy-page div:nth-child(even) {
   font-weight: bold;
 }
 
@@ -153,13 +153,13 @@ hr {
   text-align: center;
 }
 
-#show-page ul {
+#buddy-page ul {
   margin: 0 0 2rem;
   padding: 0;
   list-style: none;
 }
   
-#show-page li {
+#buddy-page li {
   font-weight: bold;
 }
 

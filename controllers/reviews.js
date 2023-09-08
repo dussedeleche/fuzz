@@ -15,7 +15,7 @@ async function deleteReview(req, res) {
   dog.reviews.remove(req.params.id);
   // Save the updated dog doc
   await dog.save();
-  // Redirect back to the dog's show view
+  // Redirect back to the dog's buddy view
   res.redirect(`/dogs/${dog._id}`);
 }
 

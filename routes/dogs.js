@@ -7,9 +7,13 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 router.get('/', dogsCtrl.index);
 // GET /dogs/new
 router.get('/new', ensureLoggedIn, dogsCtrl.new);
-// GET /dogs/:id (show functionality) MUST be below new route
-router.get('/:id', dogsCtrl.show);
+// GET /dogs/:id (buddy functionality) MUST be below new route
+router.get('/:id', dogsCtrl.buddy);
 // POST /dogs
 router.post('/', ensureLoggedIn, dogsCtrl.create);
-	
+// router.put('/', ensureLoggedIn, dogsCtrl.update);
+router.put('/:id', ensureLoggedIn, dogsCtrl.update);
+router.get('/:id/edit', ensureLoggedIn, dogsCtrl.edit)
+
+
 module.exports = router;

@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<form id="edit-form" action="/dogs/<%= dog._id%>?_method=PUT" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name" value="<%= dog.name %>" required>
+  <label>Birthday:</label>
+  <input type="date" name="birthday">
+  <label>Gender:</label>
+  <select name="gender">
+    <option value="M">M</option>
+    <option value="M/N">M/N</option>
+    <option value="F">F</option>
+    <option value="F/S">F/S</option>
+  </select>
+  <label>My Pet:</label>
+  <input type="checkbox" name="myPet" unchecked>
+  <input type="submit" value="Edit Dog">
+</form>
+
+<%- include('../partials/footer') %>

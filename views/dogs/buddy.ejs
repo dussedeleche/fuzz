@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<section id="show-page">
+<section id="buddy-page">
   <div>Name: </div>
   <div><%= dog.name %></div>
   <div>Birthday: </div>
@@ -35,7 +35,7 @@
   action="/dogs/<%= dog._id %>/reviews">
   <label>Notes:</label>
   <textarea name="content"></textarea>
-  <label>Rating:</label>
+  <label>Stars</label>
   <select name="rating">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -70,7 +70,7 @@
             <% if (user?._id.equals(r.user)) { %>
               <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
                 <button type="submit">X</button>
-              </form>
+                </form>
             <% } %>
           </td>
         </tr>
@@ -82,7 +82,7 @@
     </tbody>
   </table>
 <% } else { %>
-  <h5>No Reviews Yet</h5>
+  <h5>Play log empty</h5>
 <% } %>
   
 <%- include('../partials/footer') %>
