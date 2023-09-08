@@ -1,23 +1,18 @@
 <%- include('../partials/header') %>
 
-<table id="list">
-  <thead>
-    <tr>
-      <th>Buddy</th>
-      <th>Birthday</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% dogs.forEach(function(m) { %>
-      <tr>
-        <td><%= m.name %></td>
-        <td><%= m.birthday %></td>
-        <td><a href="/dogs/<%= m._id %>">PLAY</a></td>
+<div class="card-container">
+  <% dogs.forEach(function(m) { %>
+    <div class="card">
+      <div class="card-header">
+        <%= m.name %>
+      </div>
+      <div class="card-content">
+        <p>Birthday: <%= m.birthday %></p>
+        <a href="/dogs/<%= m._id %>">PLAY</a>
         <a href="/dogs/<%= m._id %>/edit">Edit Dog</a>
-      </tr>
-      <% }); %>
-    </tbody>
-  </table>
-  
+      </div>
+    </div>
+  <% }); %>
+</div>
+
 <%- include('../partials/footer') %>
