@@ -316,7 +316,12 @@ header {
 .features {
   background-color: #fff;
   padding: 40px 48px;
+  font-size: 40px;
 
+}
+
+#ft1, #ft2, #ft3, #ft4, #ft5, #ft6 {
+  font-size: 24px;
 }
 
 /* How It Works section styles */

@@ -28,9 +28,7 @@ function newDog(req, res) {
 }
 
 async function create(req, res) {
-  // convert my pet's checkbox of nothing or "on" to boolean
   req.body.myPet = !!req.body.myPet;
-  // Remove empty properties so that defaults will be applied
   for (let key in req.body) {
     if (req.body[key] === "") delete req.body[key];
   }
@@ -51,22 +49,19 @@ async function updatedog(req, res) {
   try {
     const dogId = req.params.id;
     const updateddogData = req.body;
-    // Find and update the dog
     const updateddog = await Dog.findByIdAndUpdate(dogId, updateddogData, {
       new: true,
     });
     if (!updateddog) {
-      // If the dog with the given ID is not found
       return res.status(404).send("dog not found");
     }
-    // Redirect to the updated dog's page or any other desired action
     const title = 'Updated dog'
     res.redirect(`/dogs/${updateddog._id}?title=${encodeURIComponent(title)}`);
   } catch (err) {
     console.error(err);
     res.render("dogs/edit", {
       errorMsg: err.message,
-      dog: req.body, // Pass the original data back to the edit form
+      dog: req.body, 
     });
   }
 }
@@ -78,6 +73,6 @@ async function edit(req, res) {
     res.render("dogs/edit", { dog, title });
   } catch (err) {
     console.error(err);
-    res.redirect("/dogs"); // Redirect to the dogs index or handle the error appropriately
+    res.redirect("/dogs"); 
   }
 }
